@@ -4,7 +4,7 @@
  
             {
                 "action":"Airtime",
-                "sub_menu":["R10", "R30"]
+                "sub_menu":[{"menuIem":"R10", "callbackData ":"R30"}]
             },
             {
                 "action":"Data",

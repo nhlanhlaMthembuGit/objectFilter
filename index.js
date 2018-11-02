@@ -95,9 +95,7 @@ function getIntentAction(intentAction)
 
          }else if(jsonData.intent[2].sub_menu[i]=='WhatsApp')
          {
-
-
-             
+    
              console.log("");
              console.log(jsonData.intent[2].sub_menu[i]);
             for(let x = 0; x< jsonData.intent[2].WhatsApp.length; x++)
@@ -106,7 +104,8 @@ function getIntentAction(intentAction)
 
             }
 
-         }else if(jsonData.intent[2].sub_menu[i]=='Twitter')
+         }else if(jsonData.intent[2].sub_menu[i
+        ]=='Twitter')
          {
 
              console.log("");
@@ -116,7 +115,6 @@ function getIntentAction(intentAction)
              console.log(jsonData.intent[2].Twitter[x]);
 
             }
-
 
          }else if(jsonData.intent[2].sub_menu[i]=='Facebook')
          {
@@ -128,14 +126,9 @@ function getIntentAction(intentAction)
              console.log(jsonData.intent[2].Facebook[x]);
 
             }
-
-
          }
 
         }
-
-
-
        }else if(intentAction=='Call center')
        {
 
@@ -168,26 +161,59 @@ function getData(theAction)
         let result = jsonData.intent.filter(data=>{
 
              return data.action == theAction;
+
            
         })
-
-        let find = jsonData.intent.find(result=>{
-
-            console.log(result);
-        })
-        //
+        // console.log(result);
         
+        //For loop to switch conditions
+        let index;
+        for(let v = 0; v < jsonData.intent.length; v++){
 
+            if(jsonData.intent[v].action === theAction){
+                index = v;
+            }
+        }
+         console.log(index);
 
-    })
+            let arr = [];
+            let temp = jsonData.intent[index].sub_menu;
+    
 
+        for(let y = 0;y<temp.length;y++){
+                arr.push(temp[y].menuItem); 
+        }
+   
 
+        ///Filter function
+        let unique_array = arr.filter(function(elem, index, self) {
+            return index == self.indexOf(elem);
+        });
+        arr = [];
+         for(let x= 0 ;x<unique_array.length;x++){
+             obj = {};
+             obj[unique_array[x]] = [];
+            
+            for(let y = 0;y<temp.length;y++){
+
+               if(temp[y].menuItem === unique_array[x])
+               obj[unique_array[x]].push(temp[y].callbackData);
+            }
+            arr.push(obj);
+           
+         }
+        //  return arr;
+           
+         console.log(arr);
+    });
+    
 }
 
-getData("Data");
+ getData("Social Bundles");
 
 // function getReduceArray(total, num)
 // {
+
 //     jsonFile.readFile(fileName,function(err,jsonData){
 
 //         let theReduce = jsonData.intent.reduce(infor=>{
