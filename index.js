@@ -168,7 +168,7 @@ function getData(theAction)
         
         //For loop to switch conditions
         let index;
-        for(let v = 0; v < jsonData.intent.length; v++){
+        for(let v = 0; v <jsonData.intent.length; v++){
 
             if(jsonData.intent[v].action === theAction){
                 index = v;
@@ -180,7 +180,7 @@ function getData(theAction)
             let temp = jsonData.intent[index].sub_menu;
     
 
-        for(let y = 0;y<temp.length;y++){
+        for(let y = 0;y <temp.length;y++){
                 arr.push(temp[y].menuItem); 
         }
    
@@ -190,7 +190,7 @@ function getData(theAction)
             return index == self.indexOf(elem);
         });
         arr = [];
-         for(let x= 0 ;x<unique_array.length;x++){
+         for(let x= 0 ;x< unique_array.length;x++){
              obj = {};
              obj[unique_array[x]] = [];
             
